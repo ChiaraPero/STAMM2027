@@ -4,35 +4,720 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>STAMM 2027</title>
+  <title>STAMM 2027 | 3rd International Workshop on Security and Truth</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      color: #222;
+      background: #f7f8fa;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* HEADER */
+
+    header {
+      background:
+        linear-gradient(rgba(13, 35, 64, 0.88), rgba(13, 35, 64, 0.88)),
+        linear-gradient(135deg, #17365d, #274d78);
+      color: white;
+      padding: 85px 20px 75px;
+      text-align: center;
+    }
+
+    header .workshop-label {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+
+    header h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      letter-spacing: 3px;
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    header h2 {
+      max-width: 950px;
+      margin: 0 auto 30px;
+      font-size: clamp(1.25rem, 2.6vw, 2rem);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .aina-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 12px 24px;
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.25s;
+    }
+
+    .aina-link:hover {
+      background: white;
+      color: #17365d;
+    }
+
+    .venue {
+      margin-top: 24px;
+      font-size: 1.05rem;
+    }
+
+    .date-main {
+      margin-top: 7px;
+      font-size: 1.15rem;
+      font-weight: bold;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    nav .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #17365d;
+      padding: 18px 17px;
+      font-size: 0.83rem;
+      font-weight: bold;
+      letter-spacing: 0.6px;
+    }
+
+    nav a:hover {
+      background: #f0f3f7;
+    }
+
+    /* SECTIONS */
+
+    section {
+      scroll-margin-top: 75px;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 75px 30px;
+    }
+
+    .section-title {
+      color: #17365d;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .section-line {
+      width: 65px;
+      height: 4px;
+      background: #17365d;
+      margin-bottom: 35px;
+    }
+
+    .section p {
+      margin-bottom: 18px;
+      text-align: justify;
+    }
+
+    .white-section {
+      background: white;
+    }
+
+    /* INTRO BOX */
+
+    .intro-box {
+      background: white;
+      max-width: 900px;
+      margin: -35px auto 0;
+      position: relative;
+      z-index: 2;
+      padding: 35px 45px;
+      border-radius: 8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .intro-box h3 {
+      color: #17365d;
+      margin-bottom: 12px;
+      font-size: 1.5rem;
+    }
+
+    /* TOPICS */
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px 35px;
+    }
+
+    .topic {
+      background: white;
+      padding: 17px 20px;
+      border-left: 4px solid #17365d;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    /* DATES */
+
+    .dates-box {
+      background: #17365d;
+      color: white;
+      border-radius: 10px;
+      padding: 15px 35px;
+      max-width: 850px;
+      margin: auto;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .date-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 20px 5px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .date-row:last-child {
+      border-bottom: none;
+    }
+
+    .date-row strong {
+      text-align: right;
+    }
+
+    /* SUBMISSION */
+
+    .button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 13px 25px;
+      background: #17365d;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #0c2949;
+    }
+
+    /* COMMITTEE */
+
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .person {
+      background: white;
+      padding: 28px 20px;
+      border-radius: 7px;
+      text-align: center;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+    }
+
+    .person h3 {
+      color: #17365d;
+      margin-bottom: 7px;
+    }
+
+    .person p {
+      text-align: center;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      background: #eef2f6;
+      padding: 35px;
+      border-radius: 8px;
+      max-width: 700px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #0d2340;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: white;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+      .topics-grid,
+      .committee-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .date-row {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .date-row strong {
+        text-align: left;
+      }
+
+      nav {
+        position: relative;
+      }
+
+      nav a {
+        padding: 12px;
+        font-size: 0.75rem;
+      }
+
+      .section {
+        padding: 55px 22px;
+      }
+
+      .intro-box {
+        margin: 0;
+        border-radius: 0;
+      }
+    }
+  </style>
 </head>
+
 
 <body>
 
-  <h1>STAMM 2027</h1>
+  <!-- HERO -->
 
-  <h2>
-    3rd International Workshop on Security and Truth in the Era of
-    AI-Generated Media Manipulation
-  </h2>
+  <header id="home">
 
-  <p>
-    In conjunction with AINA 2027
-  </p>
+    <div class="workshop-label">
+      International Workshop
+    </div>
 
-  <p>
-    Tirana, Albania — March 24–26, 2027
-  </p>
+    <h1>STAMM 2027</h1>
 
-  <hr>
+    <h2>
+      3rd International Workshop on Security and Truth
+      in the Era of AI-Generated Media Manipulation
+    </h2>
 
-  <h2>Welcome to STAMM 2027</h2>
+    <a
+      class="aina-link"
+      href="https://voyager.ce.fit.ac.jp/conf/aina/2027/"
+      target="_blank"
+      rel="noopener noreferrer">
+      In conjunction with AINA 2027 ↗
+    </a>
 
-  <p>
-    The 3rd International Workshop on Security and Truth in the Era of
-    AI-Generated Media Manipulation (STAMM 2027) will be held in
-    conjunction with AINA 2027.
-  </p>
+    <div class="venue">
+      Polytechnic University of Tirana, Tirana, Albania
+    </div>
+
+    <div class="date-main">
+      March 24–26, 2027
+    </div>
+
+  </header>
+
+
+  <!-- MENU -->
+
+  <nav>
+    <div class="nav-container">
+      <a href="#home">HOME</a>
+      <a href="#cfp">CALL FOR PAPERS</a>
+      <a href="#topics">TOPICS</a>
+      <a href="#dates">IMPORTANT DATES</a>
+      <a href="#submission">SUBMISSION</a>
+      <a href="#committee">COMMITTEE</a>
+      <a href="#specialissue">SPECIAL ISSUE</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </nav>
+
+
+  <!-- INTRO -->
+
+  <div class="intro-box">
+
+    <h3>Welcome to STAMM 2027</h3>
+
+    <p>
+      STAMM 2027 provides an international forum for researchers,
+      practitioners, and experts interested in the security,
+      authenticity, and trustworthiness of digital media in the era
+      of generative artificial intelligence.
+    </p>
+
+  </div>
+
+
+  <!-- CALL FOR PAPERS -->
+
+  <section id="cfp" class="white-section">
+
+    <div class="section">
+
+      <h2 class="section-title">Call for Papers</h2>
+      <div class="section-line"></div>
+
+      <p>
+        The rapid evolution of artificial intelligence is profoundly
+        transforming the digital media landscape. At the same time,
+        increasingly sophisticated generative models enable the creation
+        and manipulation of synthetic content at unprecedented scale,
+        challenging the authenticity of text, images, audio, and video.
+      </p>
+
+      <p>
+        Deepfakes, AI-generated misinformation, synthetic media, and
+        adversarial manipulation represent major challenges for digital
+        trust, information security, and reliable communication.
+        Addressing these issues requires new methods capable of detecting,
+        understanding, preventing, and mitigating manipulated and
+        AI-generated content.
+      </p>
+
+      <p>
+        STAMM 2027 aims to bring together researchers from academia,
+        industry, and research institutions to discuss recent advances
+        in artificial intelligence, multimedia forensics, cybersecurity,
+        trustworthy AI, and media authenticity.
+      </p>
+
+      <p>
+        The workshop welcomes original contributions at the intersection
+        of artificial intelligence, media manipulation, information
+        disorder, security, and digital content verification.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- TOPICS -->
+
+  <section id="topics">
+
+    <div class="section">
+
+      <h2 class="section-title">Topics of Interest</h2>
+      <div class="section-line"></div>
+
+      <p>
+        Topics of interest include, but are not limited to:
+      </p>
+
+      <div class="topics-grid">
+
+        <div class="topic">
+          AI-driven media manipulation detection and prevention
+        </div>
+
+        <div class="topic">
+          Deepfake creation, detection, and mitigation
+        </div>
+
+        <div class="topic">
+          Multimodal approaches for manipulated text, image, audio, and video
+        </div>
+
+        <div class="topic">
+          Real-time detection of generative AI manipulated media
+        </div>
+
+        <div class="topic">
+          Adversarial AI attacks and defense mechanisms
+        </div>
+
+        <div class="topic">
+          AI-based content verification and authentication
+        </div>
+
+        <div class="topic">
+          Quantum computing for media integrity and security
+        </div>
+
+        <div class="topic">
+          Generative AI and GAN-based media creation and security
+        </div>
+
+        <div class="topic">
+          Blockchain technologies for digital media authenticity
+        </div>
+
+        <div class="topic">
+          Federated learning for decentralized manipulated-content detection
+        </div>
+
+        <div class="topic">
+          Machine learning for AI-generated misinformation detection
+        </div>
+
+        <div class="topic">
+          NLP methods for fake news and misinformation detection
+        </div>
+
+        <div class="topic">
+          Image, audio, and video forensics
+        </div>
+
+        <div class="topic">
+          Computer vision for synthetic and manipulated media detection
+        </div>
+
+        <div class="topic">
+          Edge computing for distributed media validation
+        </div>
+
+        <div class="topic">
+          Cross-modal and multimodal manipulation detection
+        </div>
+
+        <div class="topic">
+          Explainable AI for media verification
+        </div>
+
+        <div class="topic">
+          Trustworthy and responsible AI for digital media
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- IMPORTANT DATES -->
+
+  <section id="dates" class="white-section">
+
+    <div class="section">
+
+      <h2 class="section-title">Important Dates</h2>
+      <div class="section-line"></div>
+
+      <div class="dates-box">
+
+        <div class="date-row">
+          <span>Paper Submission Deadline</span>
+          <strong>December 10, 2026</strong>
+        </div>
+
+        <div class="date-row">
+          <span>Authors Notification</span>
+          <strong>January 10, 2027</strong>
+        </div>
+
+        <div class="date-row">
+          <span>Author Registration</span>
+          <strong>January 25, 2027</strong>
+        </div>
+
+        <div class="date-row">
+          <span>Final Manuscript</span>
+          <strong>January 25, 2027</strong>
+        </div>
+
+        <div class="date-row">
+          <span>Conference Dates</span>
+          <strong>March 24–26, 2027</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SUBMISSION -->
+
+  <section id="submission">
+
+    <div class="section">
+
+      <h2 class="section-title">Paper Submission Guideline</h2>
+      <div class="section-line"></div>
+
+      <p>
+        Authors are invited to submit original research contributions
+        relevant to the scope of STAMM 2027.
+      </p>
+
+      <p>
+        Manuscripts must follow the official formatting and submission
+        requirements established for AINA 2027 and its workshops.
+      </p>
+
+      <p>
+        Accepted papers will be published as part of the AINA 2027
+        workshop proceedings, subject to the conference publication
+        and registration requirements.
+      </p>
+
+      <a
+        class="button"
+        href="https://voyager.ce.fit.ac.jp/conf/aina/2027/"
+        target="_blank"
+        rel="noopener noreferrer">
+        AINA 2027 Website ↗
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- COMMITTEE -->
+
+  <section id="committee" class="white-section">
+
+    <div class="section">
+
+      <h2 class="section-title">Organization Team</h2>
+      <div class="section-line"></div>
+
+      <div class="committee-grid">
+
+        <div class="person">
+          <h3>Dr. Chiara Pero</h3>
+          <p>Link Campus University, Italy</p>
+        </div>
+
+        <div class="person">
+          <h3>Dr. Carmen Bisogni</h3>
+          <p>University of Salerno, Italy</p>
+        </div>
+
+        <div class="person">
+          <h3>Prof. Aniello Castiglione</h3>
+          <p>University of Salerno, Italy</p>
+        </div>
+
+        <div class="person">
+          <h3>Prof. Debiao He</h3>
+          <p>Wuhan University, China</p>
+        </div>
+
+        <div class="person">
+          <h3>Prof. Thomas Tan</h3>
+          <p>Edinburgh Napier University, UK</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SPECIAL ISSUE -->
+
+  <section id="specialissue">
+
+    <div class="section">
+
+      <h2 class="section-title">Special Issue</h2>
+      <div class="section-line"></div>
+
+      <p>
+        Information regarding a Special Issue associated with
+        STAMM 2027 will be announced shortly.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="white-section">
+
+    <div class="section">
+
+      <h2 class="section-title">Contact</h2>
+      <div class="section-line"></div>
+
+      <div class="contact-box">
+
+        <strong>Dr. Chiara Pero</strong><br>
+        Lead Contact<br>
+        Link Campus University, Italy
+
+        <!-- We will add the official contact e-mail here -->
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2027 STAMM — 3rd International Workshop on Security and Truth
+      in the Era of AI-Generated Media Manipulation
+    </p>
+
+    <p style="margin-top: 8px;">
+      In conjunction with
+      <a
+        href="https://voyager.ce.fit.ac.jp/conf/aina/2027/"
+        target="_blank"
+        rel="noopener noreferrer">
+        AINA 2027
+      </a>
+    </p>
+
+  </footer>
 
 </body>
 </html>
